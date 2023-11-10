@@ -23,7 +23,13 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
+
+Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
+Route::get('/pricing', [\App\Http\Controllers\PricingController::class, 'index'])->name('pricing');
+Route::get('/download', [\App\Http\Controllers\DownloadController::class, 'index'])->name('download');
+Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
