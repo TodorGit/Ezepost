@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vepost_Plans;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,7 +13,12 @@ class PricingController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Pricing/Index");
+
+        $allPlans = Vepost_Plans::all();
+       // dd($allPlans);
+        return Inertia::render('Pricing/Index', [
+            'plans' => $allPlans,
+        ]);
 
     }
 

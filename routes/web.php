@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,6 +32,14 @@ Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->n
 Route::get('/pricing', [\App\Http\Controllers\PricingController::class, 'index'])->name('pricing');
 Route::get('/download', [\App\Http\Controllers\DownloadController::class, 'index'])->name('download');
 Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/packages/{category}', [PackageController::class, 'getPackages'])->name('packages.category');
+    Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
+    Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
+    Route::get('/payment/cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
+
+});
 
 
 Route::get('/dashboard', function () {

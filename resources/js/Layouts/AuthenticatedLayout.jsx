@@ -52,10 +52,14 @@ export default function Authenticated({user, header, children}) {
                                         </Dropdown.Trigger>
 
                                         <Dropdown.Content>
-                                            <Dropdown.Link>EZEBox</Dropdown.Link>
-                                            <Dropdown.Link>Received</Dropdown.Link>
-                                            <Dropdown.Link>Viewed</Dropdown.Link>
-                                            <Dropdown.Link>Sent</Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('packages.category', {category: 'all'})}>EZEBox</Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('packages.category', {category: 'received'})}>Received</Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('packages.category', {category: 'viewed'})}>Viewed</Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route('packages.category', {category: 'sent'})}>Sent</Dropdown.Link>
                                         </Dropdown.Content>
                                     </Dropdown>
                                     <Dropdown>
@@ -113,7 +117,9 @@ export default function Authenticated({user, header, children}) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link>Subscribe</Dropdown.Link>
+                                        <Dropdown.Link
+                                            href={route("pricing")}>Subscribe
+                                        </Dropdown.Link>
                                         <Dropdown.Link>Topup</Dropdown.Link>
                                         <Dropdown.Link>Customer Portal</Dropdown.Link>
                                     </Dropdown.Content>

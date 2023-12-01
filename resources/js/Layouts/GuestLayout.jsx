@@ -23,7 +23,16 @@ export default function Guest({children}) {
                                 <NavLink href={route('about')} active={route().current('about')}>
                                     About
                                 </NavLink>
-                                {/*  more links as needed */}
+                                <NavLink href={route('pricing')} active={route().current('pricing')}>
+                                    Pricing
+                                </NavLink>
+                                <NavLink href={route('download')} active={route().current('download')}>
+                                    Download
+                                </NavLink>
+                                <NavLink href={route('contact-us')} active={route().current('contact')}>
+                                    Contact
+                                </NavLink>
+
                             </div>
                         </div>
 
